@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header_section {
+    padding: 5rem 0 5rem 0;
+}
+.logo-nav {
+    display: flex;
+    align-items: center;
+}
+.logo-container {
+    margin-right: 15vw;
+    margin-left: 10vw;
+}
+.brand-name {
+    margin-right: 10vw;
+}

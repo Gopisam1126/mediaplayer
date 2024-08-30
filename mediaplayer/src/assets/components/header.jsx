@@ -1,12 +1,19 @@
 import Navbar from "./navbar";
+import "../pageStyles/logo.css";
+import "../componentStyles/header.css"
+import "../componentStyles/common.css"
 function Header() {
-    console.log("Header Component Rendered");
     return <>
         <section className="header_section">
-            <div className="logo">
-                <img src="" alt="logo" />
+            <div className="logo-nav">
+                <div className="logo-container">
+                    <img src="\images\logo-no-background.png" alt="logo" className="logo" />
+                </div>
+                <div className="brand-name">
+                    <h1 className="brand">SPOCK MEDIA</h1>
+                </div>
+                <Navbar/>
             </div>
-            <Navbar/>
         </section>
     </>
 }
