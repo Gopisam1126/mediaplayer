@@ -16,4 +16,8 @@
 }
 .brand-name {
     margin-right: 10vw;
+    font-family: "Matemasie", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--colorSec);
 }

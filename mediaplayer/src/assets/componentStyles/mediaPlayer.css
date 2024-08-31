@@ -1,0 +1,28 @@
+:root {
+    --colorPrimary: #240750;
+    --colorSec: #57A6A1;
+    --color1: #344C64;
+    --color2: #577B8D;
+    --colorRetro1: #48CFCB;
+    --colorRetro2: #229799;
+    --colorVintage1: #F7EED3;
+
+    --fsPrimary: 4rem;
+    --fs_h1: 3rem;
+    --fs_li: 1.5rem;
+}
+.progres {
+    background-color: var(--colorRetro1);
+    width: 10vw;
+    height: .3rem;
+}
+.cr-pr {
+    background-color: var(--color1);
+    width: 50%;
+    height: 100%;
+}
+.pr-r {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}

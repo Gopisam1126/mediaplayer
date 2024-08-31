@@ -1,24 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Matemasie&family=Noto+Sans+JP:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
-    --colorPrimary: #DAD3BE;
-    --colorSec: #254336;
-    --color1: #6B8A7A;
-    --color2: #B7B597;
+    --colorPrimary: #240750;
+    --colorSec: #57A6A1;
+    --color1: #344C64;
+    --color2: #577B8D;
+    --colorRetro1: #48CFCB;
+    --colorRetro2: #229799;
+    --colorVintage1: #F7EED3;
 
     --fsPrimary: 4rem;
-    --fs_h1: 3rem
-    --fs_li: 1.5rem
+    --fs_h1: 3rem;
+    --fs_li: 1.5rem;
 }
 .header_section {
     background-color: var(--colorPrimary);
 }
+.nav_link {
+    color: var(--colorVintage1);
+}
 h1 {
     font-size: var(--fs_h1);
-    font-family: "Matemasie", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: var(--colorSec);
 }
 li {
     font-family: "Poppins", sans-serif;
