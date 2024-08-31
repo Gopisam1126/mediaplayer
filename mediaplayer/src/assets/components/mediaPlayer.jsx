@@ -16,7 +16,7 @@ function MediaPlayer() {
             </div>
             <div className="st-container">
                 <p className="song-title">
-                    ganja in my brain.mp3
+                    song name.mp3
                 </p>
             </div>
             <div className="media-nav">
