@@ -24,13 +24,11 @@
     width: 10vw;
     height: .3rem;
 }
-.cr-pr {
-    background-color: var(--colorSec);
-    width: 50%;
-    height: 100%;
-}
 .pr-r {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+}
+.media-nav {
+    display: flex;
 }
