@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useRef } from "react";
 import "../componentStyles/mediaPlayer.css";
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
@@ -30,6 +29,10 @@ function MediaPlayer() {
         const progress = (currentTime / duration) * 100;
         return progress;
     }
+
+    // function nextSong() {
+
+    // }
 
     function formatTime(time) {
         const min = Math.floor(time / 60);

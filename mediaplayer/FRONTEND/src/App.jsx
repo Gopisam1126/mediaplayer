@@ -3,6 +3,7 @@ import Home from "./assets/pages/home";
 import Login from "./assets/pages/login";
 import Songs from "./assets/pages/songs";
 import Signup from "./assets/pages/signup";
+import UploadSong from "./assets/pages/uploadSong";
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
           <Route path="/songs" element={<Songs/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>} />
+          <Route path="/upload" element={<UploadSong/>} />
         </Routes>
       </Router>
     </>

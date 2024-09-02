@@ -18,6 +18,9 @@ function Navbar() {
                     <li className="nav_li nav_li4">
                         <Link to="/signup" className="nav_link">Create an Account</Link>
                     </li>
+                    <li className="nav_li nav_li5">
+                        <Link to="/upload" className="nav_link">Add a song</Link>
+                    </li>
                 </ul>
             </div>
         </section>
