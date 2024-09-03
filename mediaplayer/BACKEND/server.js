@@ -42,12 +42,16 @@ app.get("/songs", async (req, res) => {
 app.get("/songs/play/:id", async (req, res) => {
     const songId = req.params.id;
     try {
-        const fetchRes = await pg.query(`SELECT file FROM songs WHERE id = $1 `, [songId]);
+        const fetchRes = await pg.query(`SELECT title, artist, file FROM songs WHERE id = $1 `, [songId]);
 
         if (fetchRes.rows.length >= 1) {
-            const songFile = fetchRes.rows[0].file;
+            const {title, artist, file} = fetchRes.rows[0];
             res.setHeader("Content-Type", "audio/mpeg");
-            res.send(songFile);
+            res.json({
+                title,
+                artist,
+                file: file.toString("base64")
+            });
         } else {
             res.sendStatus(404).send("Song not Found");
         }

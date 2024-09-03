@@ -12,18 +12,20 @@ function MediaPlayer() {
     const [currentTime, setCurrentTime] = useState(0);
     const [songFile, setSongFile] = useState(null); // Use null initially
     const [songId, setSongId] = useState(1)
+    const [songTitle, setSongTitle] = useState();
+    const [songArtist, setSongArtist] = useState();
     const audioRef = useRef(null);
 
     useEffect(() => {
         async function getSong() {
             try {
-                const songData = await axios.get(`http://localhost:3000/songs/play/${songId}`, {
-                    responseType: 'blob'
-                });
-                const audioUrl = URL.createObjectURL(new Blob([songData.data], { type: 'audio/mpeg' }));
+                const songData = await axios.get(`http://localhost:3000/songs/play/${songId}`);
+                const { title, artist, file } = songData.data;
+                const audioBlob = new Blob([new Uint8Array(atob(file).split("").map(char => char.charCodeAt(0)))], { type: 'audio/mpeg' });
+                const audioUrl = URL.createObjectURL(audioBlob);
                 setSongFile(audioUrl);
-                // If you have a way to get the song title, you can set it here:
-                // setSongTitle("Your Song Title"); 
+                setSongTitle(title);
+                setSongArtist(artist);
             } catch (err) {
                 console.log("Error getting song details", err);     
             }
@@ -48,7 +50,7 @@ function MediaPlayer() {
     }
 
     function handlePrev() {
-        setSongId(prevId => prevId > 1 ? 1 - 1 : 1);
+        setSongId(prevId => prevId > 1 ? prevId - 1 : 1);
     }
 
     function formatTime(time) {
@@ -79,7 +81,7 @@ function MediaPlayer() {
             </div>
             <div className="st-container">
                 <p className="song-title">
-                    KAAY
+                    {songTitle} by {songArtist}
                 </p>
             </div>
             <div className="media-nav">
