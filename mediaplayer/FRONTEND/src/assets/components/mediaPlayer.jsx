@@ -1,22 +1,35 @@
 import { useState, useRef, useEffect } from "react";
-import "../componentStyles/mediaPlayer.css";
 import axios from "axios";
+import "../componentStyles/mediaPlayer.css";
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-function MediaPlayer() {
 
+function MediaPlayer() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
+    const [songFile, setSongFile] = useState(null); // Use null initially
+    const [songId, setSongId] = useState(1)
     const audioRef = useRef(null);
 
-    const track = {
-        fileUrl: "/songs/Baby_Jean_-_KAAYI__lyrics_(256k).mp3",
-        artist: "Baby Jean",
-        title: "KAAYI"
-    }
+    useEffect(() => {
+        async function getSong() {
+            try {
+                const songData = await axios.get(`http://localhost:3000/songs/play/${songId}`, {
+                    responseType: 'blob'
+                });
+                const audioUrl = URL.createObjectURL(new Blob([songData.data], { type: 'audio/mpeg' }));
+                setSongFile(audioUrl);
+                // If you have a way to get the song title, you can set it here:
+                // setSongTitle("Your Song Title"); 
+            } catch (err) {
+                console.log("Error getting song details", err);     
+            }
+        }
+        getSong();
+    }, [songId]);
 
     function handleTimeUpdate() {
         setCurrentTime(audioRef.current.currentTime);
@@ -30,10 +43,13 @@ function MediaPlayer() {
         const progress = (currentTime / duration) * 100;
         return progress;
     }
+    function handleNext() {
+        setSongId(prevId => prevId + 1);
+    }
 
-    // function nextSong() {
-
-    // }
+    function handlePrev() {
+        setSongId(prevId => prevId > 1 ? 1 - 1 : 1);
+    }
 
     function formatTime(time) {
         const min = Math.floor(time / 60);
@@ -47,32 +63,34 @@ function MediaPlayer() {
         } else {
             audioRef.current.play();
         }
-
         setIsPlaying(!isPlaying);
     }
 
-    return <>
+    return (
         <section className="mp-section">
-            <audio ref={audioRef} src={track.fileUrl} onTimeUpdate={handleTimeUpdate} onLoadedData={handleDuration}/>
+            <audio
+                ref={audioRef}
+                src={songFile}
+                onTimeUpdate={handleTimeUpdate}
+                onLoadedData={handleDuration}
+            />
             <div className="mp-container">
-                <img src="\images\thumbnail_rough.jpg" alt="thumbnail" className="media-tn" />
+                <img src="/images/thumbnail_rough.jpg" alt="thumbnail" className="media-tn" />
             </div>
             <div className="st-container">
                 <p className="song-title">
-                    {track.title}
+                    KAAY
                 </p>
             </div>
             <div className="media-nav">
-                <div className="nav-left">
-                    <KeyboardDoubleArrowLeftIcon/>
+                <div className="nav-left" onClick={handlePrev}>
+                    <KeyboardDoubleArrowLeftIcon />
                 </div>
                 <div className="play-pause" onClick={handlePlay}>
-                    {
-                        isPlaying ? <PauseIcon/> : <PlayArrowIcon/>
-                    }
+                    {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                 </div>
-                <div className="nav-right">
-                    <KeyboardDoubleArrowRightIcon/>
+                <div className="nav-right" onClick={handleNext}>
+                    <KeyboardDoubleArrowRightIcon />
                 </div>
             </div>
             <div className="timer-container">
@@ -82,16 +100,19 @@ function MediaPlayer() {
             </div>
             <div className="progres-container">
                 <div className="progres">
-                    <div className="cr-pr" style={{
-                        width: `${getProgress()}%`,
-                        backgroundColor: '#57A6A1',
-                        height: '100%',
-                        transition: 'width 0.1s linear',
-                        }}></div>
+                    <div
+                        className="cr-pr"
+                        style={{
+                            width: `${getProgress()}%`,
+                            backgroundColor: '#57A6A1',
+                            height: '100%',
+                            transition: 'width 0.1s linear',
+                        }}
+                    ></div>
                 </div>
             </div>
         </section>
-    </>
+    );
 }
 
 export default MediaPlayer;

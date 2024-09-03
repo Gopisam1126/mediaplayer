@@ -37,6 +37,24 @@ app.get("/songs", async (req, res) => {
         console.log("Error Retriveing Songs : ", err);
         res.sendStatus(500).send("Error Retriveing Songs!!");
     }
+});
+
+app.get("/songs/play/:id", async (req, res) => {
+    const songId = req.params.id;
+    try {
+        const fetchRes = await pg.query(`SELECT file FROM songs WHERE id = $1 `, [songId]);
+
+        if (fetchRes.rows.length >= 1) {
+            const songFile = fetchRes.rows[0].file;
+            res.setHeader("Content-Type", "audio/mpeg");
+            res.send(songFile);
+        } else {
+            res.sendStatus(404).send("Song not Found");
+        }
+    } catch (err) {
+        console.log("Error getting File: ", err);
+        res.status(500).send("Error Fetching song");
+    }
 })
 
 app.post("/upload", upload.single('song'), async (req, res) => {
