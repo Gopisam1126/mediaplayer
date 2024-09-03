@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "../componentStyles/mediaPlayer.css";
+import axios from "axios";
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -8,7 +9,7 @@ function MediaPlayer() {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0)
+    const [currentTime, setCurrentTime] = useState(0);
     const audioRef = useRef(null);
 
     const track = {

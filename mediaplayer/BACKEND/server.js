@@ -29,6 +29,16 @@ const upload = multer({ storage: multer.memoryStorage() });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/songs", async (req, res) => {
+    try {
+        const musics = await pg.query(`SELECT * FROM songs`);
+        res.json(musics.rows);
+    } catch (err) {
+        console.log("Error Retriveing Songs : ", err);
+        res.sendStatus(500).send("Error Retriveing Songs!!");
+    }
+})
+
 app.post("/upload", upload.single('song'), async (req, res) => {
     const { title, artist } = req.body;
     const file = req.file;
