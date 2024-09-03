@@ -48,7 +48,7 @@ function HandleUpload() {
                     <input type="text" name="artist" id="artist" className="artist" onChange={handleInputChange} value={formData.artist} placeholder="Artist" /><br />
                     <input type="file" name="song" id="song" className="song" onChange={handleFileChange} accept="audio/*" /><br />
 
-                    <button className="sub-button">Add Song</button>
+                    <button type="submit" className="sub-button">Add Song</button>
                 </form>
             </div>
         </section>
