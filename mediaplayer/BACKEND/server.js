@@ -1,55 +1,55 @@
 import express from "express";
 import pkg from "pg";
+import multer from "multer"; // Import multer
 import fs from "fs";
-import path from "path";
-import { log } from "console";
-import dotnev from "dotenv";
+import dotenv from "dotenv";
+import cors from "cors";
 
-dotnev.config();
+dotenv.config();
 
-const { Pool } = pkg
+const { Pool } = pkg;
 const app = express();
 const port = 3000;
 
+// Initialize PostgreSQL client
 const pg = new Pool({
     host: "localhost",
     port: process.env.DB_PORT,
     user: process.env.DB_USER_NAME,
     password: process.env.DB_PASS,
-    database: process.env.DB_BASE
-})
+    database: process.env.DB_BASE,
+});
 
-app.use(express.json);
+// Use CORS middleware
+app.use(cors());
+
+// Setup multer for file handling
+const upload = multer({ storage: multer.memoryStorage() });
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post("/upload", async (req, res) => {
-    const [title, artist] = req.body;
+app.post("/upload", upload.single('song'), async (req, res) => {
+    const { title, artist } = req.body;
+    const file = req.file;
 
-    const file = req.filesn?.song;
-
-    if(!file) {
+    if (!file) {
         console.log("Error - No File");
+        return res.status(400).send("No file uploaded");
     }
 
-    const fileData = fs.readFileSync(file.path);
-    console.log(fileData);
-
     try {
-        const result = pg.query(
+        const result = await pg.query(
             `INSERT INTO songs (title, artist, file) VALUES ($1, $2, $3) RETURNING *`,
-            [title, artist, file]
+            [title, artist, file.buffer]
         );
         res.json(result.rows[0]);
     } catch (err) {
+        console.error("Error uploading the song:", err);
         res.status(500).send('Error uploading the song');
-    } finally {
-        pg.end(() => {
-            console.log("pg closed");
-        });
     }
-    
-})
+});
 
-app.listen(port, (err) => {
+app.listen(port, () => {
     console.log(`Server running on port ${port}`);
-})
+});
