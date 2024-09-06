@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
 :root {
     --colorPrimary: #240750;
     --colorSec: #57A6A1;
@@ -6,14 +7,44 @@
     --colorRetro1: #48CFCB;
     --colorRetro2: #229799;
     --colorVintage1: #F7EED3;
+    --fontFamilymp: "SUSE", sans-serif;
 
     --fsPrimary: 4rem;
     --fs_h1: 3rem;
+    --fs-title: 2.5rem;
+    --fs-t2: 2rem;
     --fs_li: 1.5rem;
+    --fs-es: 0.8rem
 }
 .mp-section {
     background-color: var(--colorPrimary);
     color: var(--colorVintage1);
+}
+.music-player-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 4rem 6.5vw;
+    width: 30vw;
+    height: 35rem;
+    border-radius: 20px;
+    font-family: var(--fontFamilymp);
+}
+.play-list {
+    padding: 1.3rem 4vw;
+    font-size: 1.5rem;
+}
+.st-container {
+    padding-top: 1.2rem;
+    font-size: var(--fs_li);
+    overflow: hidden;
+}
+.timer-container {
+    position: relative;
+    left: 13.2vw;
+    padding-top: 1.2rem;
+    font-size: var(--fs-es);
+    opacity: 0.8;
 }
 .media-tn {
     width: 15rem;
@@ -21,9 +52,13 @@
 }
 .progres {
     background-color: var(--colorRetro1);
-    width: 10vw;
-    height: .3rem;
+    width: 15vw;
+    height: .1rem;
 }
+.progres-circle {
+    transform: translate(-50%, -50%);
+}
+
 .pr-r {
     width: 10px;
     height: 10px;
@@ -31,6 +66,7 @@
 }
 .media-nav {
     display: flex;
+    padding-top: 1.2rem;
 }
 .mp-section {
     padding: 10rem 15vw;
