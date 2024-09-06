@@ -51,7 +51,11 @@
 .media-tn {
     width: 15rem;
     height: 15rem;
+    border-radius: 10px;
 }
+/* .animate-disc {
+    animation: rotate 5s linear infinite;
+} */
 .progres {
     background-color: var(--colorRetro1);
     width: 15vw;
@@ -84,3 +88,13 @@
 .mp-section {
     padding: 10rem 15vw;
 }
+
+/* @keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    } 50% {
+        transform: rotate(180deg);
+    } 100% {
+        transform: rotate(360deg);
+    }
+} */

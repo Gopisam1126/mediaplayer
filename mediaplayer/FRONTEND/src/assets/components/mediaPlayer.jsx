@@ -87,7 +87,7 @@ function MediaPlayer() {
                     </p>
                 </div>
                 <div className="mp-container">
-                    <img src="/images/thumbnail_rough.jpg" alt="thumbnail" className="media-tn" />
+                    <img src="\images\song_1.jpg" alt="thumbnail" className={`media-tn ${isPlaying ? 'animate-disc' : ''}`} />
                 </div>
                 <div className="st-container">
                     <p className="song-title">

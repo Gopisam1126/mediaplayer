@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Loader from "./loader";
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
 import "../componentStyles/CurrentPlaying.css"
 
 function CurrentPlaying() {
@@ -30,13 +32,16 @@ function CurrentPlaying() {
                 <div className="songs-list">
                     {
                         isLoading ?(
-                            <div className="loader">Loading...</div>
+                            <Loader/>
                         ) : (
                             <ul>
                                 {songs.map(song => (
                                     <li key={song.id} className="songs" style={{
-                                        cursor: "pointer"
+                                        cursor: "pointer",
+                                        display: "flex",
+                                        alignItems: "center"
                                     }}>
+                                        <AudiotrackIcon/>
                                         {song.title}, {song.artist}
                                     </li>
                                 ))}
