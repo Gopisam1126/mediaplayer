@@ -24,7 +24,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 4rem 6.5vw;
+    padding: 4rem 7vw;
     width: 30vw;
     height: 35rem;
     border-radius: 20px;
@@ -35,9 +35,11 @@
     font-size: 1.5rem;
 }
 .st-container {
+    width: 15rem;
     padding-top: 1.2rem;
     font-size: var(--fs_li);
-    overflow: hidden;
+    text-wrap: nowrap;
+    overflow-x: hidden;
 }
 .timer-container {
     position: relative;
@@ -65,10 +67,16 @@
 }
 .media-nav {
     display: flex;
-    padding-top: 1.2rem;
+    margin-top: 1.2rem;
+    margin-left: 0.4vw;
+    width: 17vw;
     justify-content: center;
     align-items: center;
     transform: translate(-8%, 0);
+    background-color: rgba(red, red, red, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
 }
 .mp-nav-icons {
     display: flex;

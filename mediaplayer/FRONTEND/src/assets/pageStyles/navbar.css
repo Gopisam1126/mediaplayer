@@ -7,8 +7,13 @@ li {
     list-style: none;
 }
 .nav_link{
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: #fff;
+}
+.nav-icon {
+    padding-right: 0.2vw;
 }
 .navbar_container ul {
     display: flex;
