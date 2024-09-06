@@ -15,6 +15,10 @@ li {
 .nav-icon {
     padding-right: 0.2vw;
 }
+.icon-name {
+    display: flex;
+    align-items: center;
+}
 .navbar_container ul {
     display: flex;
 }
