@@ -58,7 +58,6 @@
 .progres-circle {
     transform: translate(-50%, -50%);
 }
-
 .pr-r {
     width: 10px;
     height: 10px;
@@ -67,6 +66,12 @@
 .media-nav {
     display: flex;
     padding-top: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-8%, 0);
+}
+.mp-nav-icons {
+    display: flex;
 }
 .mp-section {
     padding: 10rem 15vw;

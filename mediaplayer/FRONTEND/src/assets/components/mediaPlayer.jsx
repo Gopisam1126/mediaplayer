@@ -125,21 +125,35 @@ function MediaPlayer() {
                 <div className="media-nav">
                     <div className="shuffle">
                         <ShuffleIcon className="shuffle-icon" style={{
-                            fontSize: "1.2rem"
+                            fontSize: "1.7rem",
+                            position: "relative",
+                            right: "2vw",
                         }} />
                     </div>
-                    <div className="nav-left" onClick={handlePrev}>
-                        <KeyboardDoubleArrowLeftIcon />
-                    </div>
-                    <div className="play-pause" onClick={handlePlay}>
-                        {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-                    </div>
-                    <div className="nav-right" onClick={handleNext}>
-                        <KeyboardDoubleArrowRightIcon />
+                    <div className="mp-nav-icons">
+                        <div className="nav-left" onClick={handlePrev}>
+                            <KeyboardDoubleArrowLeftIcon style={{
+                                fontSize: "2.5rem"
+                            }}/>
+                        </div>
+                        <div className="play-pause" onClick={handlePlay}>
+                            {isPlaying ? <PauseIcon style={{
+                                fontSize: "2.5rem"
+                            }} /> : <PlayArrowIcon style={{
+                                fontSize: "2.5rem"
+                            }} />}
+                        </div>
+                        <div className="nav-right" onClick={handleNext}>
+                            <KeyboardDoubleArrowRightIcon style={{
+                                fontSize: "2.5rem",
+                            }} />
+                        </div>
                     </div>
                     <div className="repeat-container">
                         <LoopIcon className="repeat" style={{
-                            fontSize: "1.3rem"
+                            fontSize: "1.7rem",
+                            position: "relative",
+                            left: "2vw"
                         }} />
                     </div>
                 </div>
