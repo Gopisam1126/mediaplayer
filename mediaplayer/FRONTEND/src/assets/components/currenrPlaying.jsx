@@ -5,14 +5,17 @@ import "../componentStyles/CurrentPlaying.css"
 function CurrentPlaying() {
 
     const [songs, setSongs] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         async function getSongDetails() {
             try {
                 const resp = await axios.get("http://localhost:3000/songs");
                 setSongs(resp.data);
+                setIsLoading(false);
             } catch (err) {
                 console.log("Error getting Songs", err);
+                setIsLoading(false);
             }
         }
         getSongDetails();
@@ -25,13 +28,21 @@ function CurrentPlaying() {
                     Currently Playing
                 </h1>
                 <div className="songs-list">
-                    <ul>
-                        {songs.map(song => (
-                            <li key={song.id} className="songs">
-                                {song.title}, {song.artist}
-                            </li>
-                        ))}
-                    </ul>
+                    {
+                        isLoading ?(
+                            <div className="loader">Loading...</div>
+                        ) : (
+                            <ul>
+                                {songs.map(song => (
+                                    <li key={song.id} className="songs" style={{
+                                        cursor: "pointer"
+                                    }}>
+                                        {song.title}, {song.artist}
+                                    </li>
+                                ))}
+                            </ul>
+                        )
+                    }
                 </div>
             </div>
         </section>
