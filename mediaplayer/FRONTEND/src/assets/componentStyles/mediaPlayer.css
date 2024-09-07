@@ -16,6 +16,10 @@
     --fs_li: 1.5rem;
     --fs-es: 0.8rem
 }
+.media-player-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
 .mp-section {
     background-color: var(--colorPrimary);
     color: var(--colorVintage1);
@@ -29,6 +33,10 @@
     height: 35rem;
     border-radius: 20px;
     font-family: var(--fontFamilymp);
+}
+.cp-section {
+    width: 30vw; /* Adjust width as needed */
+    margin-left: 2rem; /* Add margin to separate from MediaPlayer */
 }
 .play-list {
     padding: 1.3rem 4vw;
@@ -56,6 +64,9 @@
 /* .animate-disc {
     animation: rotate 5s linear infinite;
 } */
+.progres-container {
+    cursor: pointer;
+}
 .progres {
     background-color: var(--colorRetro1);
     width: 15vw;

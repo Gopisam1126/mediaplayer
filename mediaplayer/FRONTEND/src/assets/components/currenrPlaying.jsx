@@ -1,10 +1,11 @@
 import axios from "axios";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Loader from "./loader";
 import AudiotrackIcon from '@mui/icons-material/Audiotrack';
 import "../componentStyles/CurrentPlaying.css"
 
-function CurrentPlaying() {
+function CurrentPlaying({setSongId, currentSongId}) {
 
     const [songs, setSongs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,11 @@ function CurrentPlaying() {
             }
         }
         getSongDetails();
-    }, [])
+    }, []);
+
+    function handleSongClick(songId) {
+        setSongId(songId)
+    }
 
     return <>
         <section className="cp-section">
@@ -36,11 +41,16 @@ function CurrentPlaying() {
                         ) : (
                             <ul>
                                 {songs.map(song => (
-                                    <li key={song.id} className="songs" style={{
-                                        cursor: "pointer",
-                                        display: "flex",
-                                        alignItems: "center"
-                                    }}>
+                                    <li
+                                        key={song.id}
+                                        className={`songs ${currentSongId === song.id ? 'playing-song' : ''}`}
+                                        onClick={() => handleSongClick(song.id)}
+                                        style={{
+                                            cursor: "pointer",
+                                            display: "flex",
+                                            alignItems: "center"
+                                        }}
+                                    >
                                         <AudiotrackIcon/>
                                         {song.title}, {song.artist}
                                     </li>
@@ -53,5 +63,10 @@ function CurrentPlaying() {
         </section>
     </>
 }
+
+CurrentPlaying.propTypes = {
+    setSongId: PropTypes.func.isRequired,
+    currentSongId: PropTypes.number.isRequired
+};
 
 export default CurrentPlaying;

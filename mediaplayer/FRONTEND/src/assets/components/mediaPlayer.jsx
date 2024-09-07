@@ -5,6 +5,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import CurrentPlaying from "./currenrPlaying";
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import LoopIcon from '@mui/icons-material/Loop';
 
@@ -57,6 +58,12 @@ function MediaPlayer() {
         setIsPlaying(false);
     }
 
+    function handleSeek(e) {
+        const seekTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * duration;
+        audioRef.current.currentTime = seekTime;
+        setCurrentTime(seekTime);
+    }
+
     function formatTime(time) {
         const min = Math.floor(time / 60);
         const sec = Math.floor(time % 60);
@@ -73,92 +80,65 @@ function MediaPlayer() {
     }
 
     return (
-        <section className="mp-section">
-            <div className="music-player-container">    
-                <audio
-                    ref={audioRef}
-                    src={songFile}
-                    onTimeUpdate={handleTimeUpdate}
-                    onLoadedData={handleDuration}
-                />
-                <div className="play-list">
-                    <p className="pl-title">
-                        Your Songs
-                    </p>
-                </div>
-                <div className="mp-container">
-                    <img src="\images\song_1.jpg" alt="thumbnail" className={`media-tn ${isPlaying ? 'animate-disc' : ''}`} />
-                </div>
-                <div className="st-container">
-                    <p className="song-title">
-                        {songTitle}, {songArtist}
-                    </p>
-                </div>
-                <div className="timer-container">
-                    <p className="timer">
-                        {formatTime(currentTime)}
-                    </p>
-                </div>
-                <div className="progres-container">
-                    <div className="progres">
-                        {/* <div
-                            className="cr-pr"
-                            style={{
-                                width: `${getProgress()}%`,
+        <div className="media-player-wrapper">
+            <section className="mp-section">
+                <div className="music-player-container">    
+                    <audio
+                        ref={audioRef}
+                        src={songFile}
+                        onTimeUpdate={handleTimeUpdate}
+                        onLoadedData={handleDuration}
+                    />
+                    <div className="mp-container">
+                        <img src="\images\song_1.jpg" alt="thumbnail" className={`media-tn ${isPlaying ? 'animate-disc' : ''}`} />
+                    </div>
+                    <div className="st-container">
+                        <p className="song-title">{songTitle}, {songArtist}</p>
+                    </div>
+                    <div className="timer-container">
+                        <p className="timer">{formatTime(currentTime)}</p>
+                    </div>
+                    <div className="progres-container" onClick={handleSeek}>
+                        <div className="progres">
+                            <div className="progres-circle" style={{
+                                position: "relative",
+                                left: `${getProgress()}%`,
                                 backgroundColor: '#F7EED3',
-                                height: '0.3rem',
-                                transition: 'width 0.1s linear',
-                            }}
-                        ></div> */}
-                        <div className="progres-circle" style={{
-                            position: "relative",
-                            left: `${getProgress()}%`,
-                            backgroundColor: '#F7EED3',
-                            borderRadius: "50%",
-                            top: "50%",
-                            width: "0.5rem",
-                            height: "0.5rem",
-                            transition: 'left 0.1s linear',
-                        }}></div>
-                    </div>
-                </div>
-                <div className="media-nav">
-                    <div className="shuffle">
-                        <ShuffleIcon className="shuffle-icon" style={{
-                            fontSize: "1.7rem",
-                            position: "relative",
-                            right: "2vw",
-                        }} />
-                    </div>
-                    <div className="mp-nav-icons">
-                        <div className="nav-left" onClick={handlePrev}>
-                            <KeyboardDoubleArrowLeftIcon style={{
-                                fontSize: "2.5rem"
-                            }}/>
+                                borderRadius: "50%",
+                                top: "50%",
+                                width: "0.5rem",
+                                height: "0.5rem",
+                                transition: 'left 0.1s linear',
+                            }}></div>
                         </div>
-                        <div className="play-pause" onClick={handlePlay}>
-                            {isPlaying ? <PauseIcon style={{
-                                fontSize: "2.5rem"
-                            }} /> : <PlayArrowIcon style={{
-                                fontSize: "2.5rem"
-                            }} />}
-                        </div>
-                        <div className="nav-right" onClick={handleNext}>
-                            <KeyboardDoubleArrowRightIcon style={{
-                                fontSize: "2.5rem",
+                    </div>
+                    <div className="media-nav">
+                        <div className="shuffle">
+                            <ShuffleIcon className="shuffle-icon" style={{
+                                fontSize: "1.7rem",
+                                position: "relative",
+                                right: "2vw",
                             }} />
                         </div>
-                    </div>
-                    <div className="repeat-container">
-                        <LoopIcon className="repeat" style={{
-                            fontSize: "1.7rem",
-                            position: "relative",
-                            left: "2vw"
-                        }} />
+                        <div className="mp-nav-icons">
+                            <div className="nav-left" onClick={handlePrev}>
+                                <KeyboardDoubleArrowLeftIcon style={{ fontSize: "2.5rem" }} />
+                            </div>
+                            <div className="play-pause" onClick={handlePlay}>
+                                {isPlaying ? <PauseIcon style={{ fontSize: "2.5rem" }} /> : <PlayArrowIcon style={{ fontSize: "2.5rem" }} />}
+                            </div>
+                            <div className="nav-right" onClick={handleNext}>
+                                <KeyboardDoubleArrowRightIcon style={{ fontSize: "2.5rem" }} />
+                            </div>
+                        </div>
+                        <div className="repeat-container">
+                            <LoopIcon className="repeat" style={{ fontSize: "1.7rem", position: "relative", left: "2vw" }} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <CurrentPlaying setSongId={setSongId} currentSongId={songId} />
+        </div>
     );
 }
 
