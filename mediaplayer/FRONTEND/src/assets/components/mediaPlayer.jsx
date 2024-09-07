@@ -96,7 +96,7 @@ function MediaPlayer() {
                         <p className="song-title">{songTitle}, {songArtist}</p>
                     </div>
                     <div className="timer-container">
-                        <p className="timer">{formatTime(currentTime)}</p>
+                        <p className="timern">{formatTime(currentTime)}</p>
                     </div>
                     <div className="progres-container" onClick={handleSeek}>
                         <div className="progres">

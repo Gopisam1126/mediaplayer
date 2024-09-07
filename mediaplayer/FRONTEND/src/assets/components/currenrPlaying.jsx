@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Loader from "./loader";
 import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+// import NowPlayingAnim from "./nowPlayingAnim";
 import "../componentStyles/CurrentPlaying.css"
 
 function CurrentPlaying({setSongId, currentSongId}) {
@@ -31,8 +32,9 @@ function CurrentPlaying({setSongId, currentSongId}) {
     return <>
         <section className="cp-section">
             <div className="cp-container">
-                <h1>
+                <h1 className="cp-head-anim">
                     Currently Playing
+                    {/* <NowPlayingAnim/> */}
                 </h1>
                 <div className="songs-list">
                     {
@@ -48,7 +50,8 @@ function CurrentPlaying({setSongId, currentSongId}) {
                                         style={{
                                             cursor: "pointer",
                                             display: "flex",
-                                            alignItems: "center"
+                                            alignItems: "center",
+                                            transition: "0.2s all linear"
                                         }}
                                     >
                                         <AudiotrackIcon/>

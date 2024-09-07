@@ -37,3 +37,7 @@
     color: white;
     font-weight: bold;
 }
+.cp-head-anim {
+    display: flex;
+    align-items: center;
+}
