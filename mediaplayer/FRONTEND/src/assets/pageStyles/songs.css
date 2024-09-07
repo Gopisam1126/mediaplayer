@@ -38,3 +38,7 @@
     cursor: pointer;
     margin-left: 2vw;
 }
+.song-c-loader {
+    position: relative;
+    left: 100rem;
+}

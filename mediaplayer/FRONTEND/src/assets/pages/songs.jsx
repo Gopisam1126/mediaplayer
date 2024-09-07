@@ -39,7 +39,9 @@ function Songs() {
         <section className="songs_section">
             <div className="songs_container">
                 {
-                    isLoading ? <Loader className="song-c-loader"/> : (
+                    isLoading ? <div className="loader-container">
+                            <Loader className="song-c-loader"/> 
+                        </div>: (
                         <ul className="spngs-ul">
                             {songs.map(song => (
                                 <li key={song.id} className="lib-list-songs">
