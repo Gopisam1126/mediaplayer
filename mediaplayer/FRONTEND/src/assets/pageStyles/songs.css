@@ -1,0 +1,40 @@
+:root {
+    --colorPrimary: #240750;
+    --colorSec: #57A6A1;
+    --color1: #344C64;
+    --color2: #577B8D;
+    --colorRetro1: #48CFCB;
+    --colorRetro2: #229799;
+    --colorVintage1: #F7EED3;
+    --fontFamilymp: "SUSE", sans-serif;
+
+    --fsPrimary: 4rem;
+    --fs_h1: 3rem;
+    --fs-title: 2.5rem;
+    --fs-t2: 2rem;
+    --fs_li: 1.5rem;
+    --fs-es: 0.8rem
+}
+.songs_section {
+    background-color: var(--colorPrimary);
+    color: var(--colorVintage1);
+}
+.songs_container {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 2rem 20vw;
+}
+.lib-list-songs {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.7rem;
+    padding-right: 10vw;
+}
+.func-icons {
+    display: flex;
+}
+.fav-icon-container {
+    cursor: pointer;
+    margin-left: 2vw;
+}
