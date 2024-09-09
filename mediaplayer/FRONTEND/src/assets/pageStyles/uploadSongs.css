@@ -1,0 +1,36 @@
+:root {
+    --colorPrimary: #240750;
+    --colorSec: #57A6A1;
+    --color1: #344C64;
+    --color2: #577B8D;
+    --colorRetro1: #48CFCB;
+    --colorRetro2: #229799;
+    --colorVintage1: #F7EED3;
+    --fontFamilymp: "SUSE", sans-serif;
+
+    --fsPrimary: 4rem;
+    --fs_h1: 3rem;
+    --fs-title: 2.5rem;
+    --fs-t2: 2rem;
+    --fs_li: 1.5rem;
+    --fs-es: 0.8rem
+}
+
+.admin-section {
+    background-color: var(--colorPrimary);
+}
+.form-container {
+    padding: 5rem 20vw;
+    color: var(--colorVintage1);
+}
+.add-song-form input {
+    background: transparent;
+    border: none;
+}
+.artist {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.title, .artist {
+    font-size: var(--fs_li);
+}

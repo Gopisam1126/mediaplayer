@@ -20,9 +20,9 @@
     color: var(--colorVintage1);
 }
 .songs_container {
-    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); */
     padding: 2rem 20vw;
 }
 .lib-list-songs {

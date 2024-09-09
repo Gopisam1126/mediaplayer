@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import Header from "../components/header";
+import "../pageStyles/uploadSongs.css";
 
 
 function HandleUpload() {
@@ -40,9 +42,10 @@ function HandleUpload() {
     }
 
     return <>
+        <Header/>
         <section className="admin-section">
             <div className="form-container">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="add-song-form">
                     <input type="text" name="title" id="title" className="title" onChange={handleInputChange} value={formData.title} placeholder="Title" /><br />
                     <input type="text" name="artist" id="artist" className="artist" onChange={handleInputChange} value={formData.artist} placeholder="Artist" /><br />
                     <input type="file" name="song" id="song" className="song" onChange={handleFileChange} accept="audio/*" /><br />
