@@ -18,14 +18,29 @@
 
 .admin-section {
     background-color: var(--colorPrimary);
+    font-family: var(--fontFamilymp);
+    padding-bottom: 5rem;
 }
 .form-container {
-    padding: 5rem 20vw;
+    padding: 5rem 5vw;
+    margin-left: 42vw;
     color: var(--colorVintage1);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    width: fit-content;
 }
 .add-song-form input {
     background: transparent;
-    border: none;
+    border-bottom: 0.5px solid #F7EED3;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+.add-song-form input::placeholder {
+    color: var(--colorVintage1);
+    opacity: 0.4;
 }
 .artist {
     margin: 1.2rem 0;
@@ -33,4 +48,35 @@
 .title, .artist {
     font-size: var(--fs_li);
     padding: 0.5rem 1.2vw;
+}
+#song {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+.custom-file-upload, .sub-button {
+    cursor: pointer;
+    background-color: var(--colorSec);
+    color: var(--colorVintage1);
+    border: none;
+    border-radius: 0.5rem;
+    transition: 0.2s all linear;
+}
+.custom-file-upload {
+    padding: 0.2rem 1.0vw;
+    display: inline-block;
+    text-align: center;
+    font-size: var(--fs_li);
+}
+.custom-file-upload:hover {
+    background-color: var(--color2);
+}
+.sub-button {
+    padding: 0.3rem 1.2vw;
+    font-size: 1.2rem;
+    margin-top: -0.2rem;
+    width: 22rem;
+}
+.sub-button:hover{
+    background-color: var(--color2);
 }
