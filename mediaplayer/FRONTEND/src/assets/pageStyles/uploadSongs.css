@@ -19,13 +19,16 @@
 .admin-section {
     background-color: var(--colorPrimary);
     font-family: var(--fontFamilymp);
-    padding-bottom: 5rem;
+    padding-bottom: 5.5rem;
 }
 .form-container {
+    position: relative;
     padding: 5rem 5vw;
-    margin-left: 42vw;
+    margin-left: 47vw;
+    margin-top: -25rem;
     color: var(--colorVintage1);
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -79,4 +82,14 @@
 }
 .sub-button:hover{
     background-color: var(--color2);
+}
+.info-img {
+    width: 30vw;
+    height: 24.7rem;
+    position: relative;
+    top: 0rem;
+    left: 17vw;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    z-index: 1;
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../components/header";
 import "../pageStyles/uploadSongs.css";
 import AddIcon from '@mui/icons-material/Add';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import FolderIcon from '@mui/icons-material/Folder';
 
 
@@ -48,6 +49,9 @@ function HandleUpload() {
     return <>
         <Header/>
         <section className="admin-section">
+            <div className="info-container">
+                <img src="\images\person-with-headphone.jpg" alt="info-img" className="info-img" />
+            </div>
             <div className="form-container">
                 <form onSubmit={handleSubmit} className="add-song-form">
                     <input type="text" name="title" id="title" className="title" onChange={handleInputChange} value={formData.title} placeholder="Title" /><br />
@@ -79,17 +83,25 @@ function HandleUpload() {
                 <div className="status-container" style={{
                     transition: "0.2s all linear"
                 }}>
-                        {
+                        { 
+                            uploaded !== null && (
                             uploaded ? (
                                 <p className="status-good">
                                     Song Uploaded
                                 </p>
                             ) : (
-                                <p className="status-bad">
-                                    Song Upload Failed
+                                <p className="status-bad" style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    paddingTop: "0.2rem",
+                                    justifyContent: "center",
+                                    color: "red"
+                                }}>
+                                    Song Upload Failed. Please try again
+                                    <ErrorOutlineIcon/>
                                 </p>
                             )
-                        }
+                        )}
                 </div>
             </div>
         </section>
