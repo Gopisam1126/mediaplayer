@@ -51,6 +51,7 @@ function HandleUpload() {
         <section className="admin-section">
             <div className="info-container">
                 <img src="\images\person-with-headphone.jpg" alt="info-img" className="info-img" />
+
             </div>
             <div className="form-container">
                 <form onSubmit={handleSubmit} className="add-song-form">

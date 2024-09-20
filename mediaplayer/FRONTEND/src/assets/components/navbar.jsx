@@ -10,7 +10,7 @@ import { useState } from "react";
 
 function Navbar() {
 
-    const [isLoggedin, setIsLoggedin] = useState(false)
+    const [isLoggedin, setIsLoggedin] = useState(false);
 
     return <> 
         <section className="navbar_section">
